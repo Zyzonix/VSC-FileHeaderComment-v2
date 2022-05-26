@@ -1,3 +1,15 @@
+/*
+ * written by ZyzonixDev
+ * published by ZyzonixDevelopments
+ *
+ * Copyright (c) 2022 ZyzonixDevelopments
+ *
+ * date created  | 26-05-2022 23:10:01
+ * 
+ * file          | extension.js
+ * project       | VSC-FileHeaderComment-V2
+ */
+
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 var vscode = require('vscode');

@@ -1,4 +1,16 @@
 /*
+ * written by ZyzonixDev
+ * published by ZyzonixDevelopments
+ *
+ * Copyright (c) 2022 ZyzonixDevelopments
+ *
+ * date created  | 26-05-2022 23:07:48
+ * 
+ * file          | command.js
+ * project       | VSC-FileHeaderComment-V2
+ */
+
+/*
  * Created on Sun Aug 07 2016
  *
  * The MIT License (MIT)
@@ -20,7 +32,9 @@
  */
 
 var vscode = require('vscode');
+var path = require("path");
 
+// function gets called by extension.js
 function insertFileHeaderComment(picked_template){
     var workspace = vscode.workspace,
         editor = vscode.window.activeTextEditor,
@@ -40,11 +54,6 @@ function insertFileHeaderComment(picked_template){
         }
     }
 
-    //remove feature template detection per language
-    //this feature is replaced by "select from available templates"
-    // if((t_lang instanceof Array)){
-    //     template = t_lang;
-    // }else
     if(t_default instanceof Array){
         template = t_default;
     }else{
@@ -56,22 +65,62 @@ function insertFileHeaderComment(picked_template){
             "${commentend}"
         ];
     }
-    var date = new Date(),
-        h = (date.getHours()+"").padStart(2, '0'),
+    
+    
+    var workspace = vscode.workspace,
+    
+    // get workspace name
+    rootPathSplit = workspace.rootPath.split("/"),
+    projectName = rootPathSplit[rootPathSplit.length - 1],
+
+    // get filename
+    fileName = vscode.window.activeTextEditor.document.fileName.replace(/^.*[\\\/]/, '')
+
+    // get full path of file (only project paths)
+    fullFilePath = vscode.window.activeTextEditor.document.fileName,
+    filePathSplit = fullFilePath.split(projectName),
+    fileWithPath = filePathSplit[filePathSplit.length - 1],
+    fileWithPathAndProject = projectName + fileWithPath
+
+    // format fileWithPath (remove / in case of no path)
+    if (fileWithPath.split("/").length = 1) {
+        fileWithPath = fileName
+    }
+
+    // format day / month to always two digits
+    var date = new Date()
+    if (date.getDate() < 10) {
+        day = "0" + date.getDate().toString()
+    } else {
+        day = date.getDate()
+    }
+    if (date.getMonth()+1 < 10) {
+        month = '0' + (date.getMonth()+1).toString()
+    } else {
+        month = date.getMonth()+1
+    }
+
+    // replace placeholders/paste data
+    var h = (date.getHours()+"").padStart(2, '0'),
         m = (date.getMinutes()+"").padStart(2, '0'),
         s = (date.getSeconds()+"").padStart(2, '0'),
-        replace = {
-            'date': date.toDateString(),
-            'time': date.toLocaleTimeString(),
-            'time24h': h+':'+m+':'+s,
-            'day': date.getDate(),
-            'month': date.getMonth()+1,
-            'year': date.getFullYear(),
-            'company': 'Your Company',
-            'filename': vscode.window.activeTextEditor.document.fileName.replace(/^.*[\\\/]/, ''),
-            'hour': h,
-            'minute': m,
-            'second': s
+        
+        replace = {            
+            'date': date.toDateString(),                                // Weekday Month Day Year       | Thu May 26 2022
+            'dateeurop': day + '-' + month + '-' + date.getFullYear(),  // Date                         | 26.05.2022
+            'time': date.toLocaleTimeString(),                          // Time                         | 10:23:52 PM
+            'time24h': h+':'+m+':'+s,                                   // Time in 24h format           | 22:23:52
+            'day': day,                                                 // Day                          | 26
+            'month': month,                                             // Month                        | 05
+            'year': date.getFullYear(),                                 // Year                         | 2022
+            'company': 'Your Company',                                  // Company / Team (specified as parameter)
+            'filename': fileName,                                       // Filename                     | file.py                    
+            'project': projectName,                                     // Project/Workspace name       | project
+            'filewithpath': fileWithPath,                               // File with path               | /path/to/file.py
+            'filewithpathandproject': fileWithPathAndProject,           // File with path and project   | project/path/to/file.py
+            'hour': h,                                                  // Hour
+            'minute': m,                                                // Minute
+            'second': s                                                 // Second
         };
     
     replace = Object.assign(replace, {
