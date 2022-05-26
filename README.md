@@ -1,5 +1,11 @@
 # FileHeaderComment v2
 
+[![Version](https://img.shields.io/badge/Version-1.0-orange)]() 
+[![Last updated](https://img.shields.io/badge/Last%20updated-26/05/2022-orange)]()
+[![Linux tests passed](https://img.shields.io/badge/Linux%20tests%20passed-true-success)]()
+[![Windows tets passed](https://img.shields.io/badge/Windows%20tests%20passed-false-red)]()
+
+
 Therefore that the author of the original [project](https://github.com/doi/fileheadercomment) did a perfect job but doesn't continue the development of this extension, this fork was created. It's main goal is a further development to add additional features to the extension.
 
 This extension allow you to insert timestamp, copyright or any information to your file like comment below. The extension is able to detect multiple languages to select the correct comment prefix.
@@ -154,4 +160,4 @@ You can define multiple templates, for instance template for MIT License
 ```
 You can use your `mit` template above by calling it through 	`Command Pallete` and choose `FileHeaderComment: Select from Available Templates`.
 
-Readme version: 1.0
+Readme version: 1.1
