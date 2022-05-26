@@ -1,6 +1,8 @@
-# FileHeaderComment
+# FileHeaderComment v2
 
-This extension allow you to insert timestamp, copyright or any information to your file like comment below
+Therefore that the author of the original [project](https://github.com/doi/fileheadercomment) did a perfect job but doesn't continue the development of this extension, this fork was created. It's main goal is a further development to add additional features to the extension.
+
+This extension allow you to insert timestamp, copyright or any information to your file like comment below. The extension is able to detect multiple languages to select the correct comment prefix.
 
 	/*
 	 * Created on Tue Feb 18 2020
@@ -10,28 +12,27 @@ This extension allow you to insert timestamp, copyright or any information to yo
 
 ## Features
 
-- insert defined parameter like `date`, `time`, `datetime`, `day`, `month`, `year`, `hour`, `minute`, `second`, `company`, `filename`
+- insert defined parameter like `date`, `time`, `datetime`, `filename` (full list can be found [here](#variables))
 - insert your own parameter and template
+- detect files language to use correct comment prefix
 - define multiple templates
 
-## Install
+## Quick Jump
+- [Installation](#installation)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Extension settings](#extension-settings)
+- [Variables](#variables)
 
-	ext install fileheadercomment
+## Installation
+Paste this after pressing `ctrl+shift+p`
 
-## Extension Settings
+	ext install vsc-fileheadercomment-v2
 
-By default you don't have to set anything. It will detect most programming language for appropriate comment syntax.
+## Setup
+Firstly paste the default configuration to your `settings.js`: 
 
-Execute it from `Command Pallete` (menu View - Command Pallete...) then type command below:
-
-1. `FileHeaderComment: Insert Default Template at Cursor`
-2. `FileHeaderComment: Select from Available Templates`
-
-The second command will show your available templates defined in Settings
-
-If you want to set your own parameter and template (set from menu Preferences - User Settings), you can read explanation below
-
-This is default configuration
+This file can be found under extension settings, keep in mind to edit the correct `settings.js` file in case you are using a SSH-connection or working in a WSL-window.
 
 ```
 	"fileHeaderComment.parameter":{
@@ -52,6 +53,42 @@ This is default configuration
 		]
 	}
 ```
+## Usage
+By default you don't have to set anything. It will detect most programming language for appropriate comment syntax.
+
+Execute it from `Command Pallete` (menu View - Command Pallete...) then type command below:
+
+1. `FileHeaderComment: Insert Default Template at Cursor`
+2. `FileHeaderComment: Select from Available Templates`
+
+The second command will show your available templates defined in Settings
+
+If you want to set your own parameter and template (set from menu Preferences - User Settings), you can read explanation below
+
+## Variables
+You can use parameters below in your template
+
+Parameter | Function | Example
+---|---|---
+`date` | current date | Thu May 26 2022
+`dateeurop` | current date (formatted for europe) | 26.05.2022
+`time` | current time | 10:23:52 PM
+`time24h` | current time in 24 hour format | 22:23:52
+`datetime`| current date + time | Thu May 26 2022 11:48:52 PM
+`datetime24h` | current date + time in 24 hour format | Thu May 26 2022 23:48:52
+`company` | "Your Company" | Company
+`day` | day of the month | 26
+`month` | current month | 05
+`year` | current year | 2022
+`hour` | current hour (24h) | 14
+`minute` | current minute | 45
+`second` | current second | 20
+`filename` | filename | file.py
+`filewithpath` | filename with filepath | /path/to/file.py
+`filewithpathandproject` | filename with filepath and project | project/path/to/file.py
+`project` | projectname | project
+
+## Extension settings
 
 Define all custom variables/paramenters in asterisk `*` like
 
@@ -117,38 +154,4 @@ You can define multiple templates, for instance template for MIT License
 ```
 You can use your `mit` template above by calling it through 	`Command Pallete` and choose `FileHeaderComment: Select from Available Templates`.
 
-You can use parameters below in your template
-
-- `date` : print current date
-- `time` : print current time
-- `time24h` : print current time in 24 hour format
-- `datetime`: print current date + time
-- `datetime24h` : print current date + time in 24 hour format
-- `company` : print "Your Company"
-- `day`: print day of the month
-- `month`: print current month
-- `year`: print current year
-- `hour`: print current hour (24h)
-- `minute`: print current minute
-- `second`: print current second
-- `filename`: print filename
-
-
-
-## Release Notes
-### 0.0.5
-- fixing python comment style (thanks to @ronak1009)
-### 0.0.4
-- support yaml, shellscript language (thanks to @waddyvic)
-- add day, month, hour, minute, second, filename parameter (thanks to @rcabg, @ternvein)
-
-### 0.0.3
-- fixing "unknown configuration setting" message in Settings (thanks to @isuda)
-
-### 0.0.2
-- multiple templates
-- bugfixes
- 
-### 0.0.1
-
-- Initial release
+Readme version: 1.0
