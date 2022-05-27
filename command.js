@@ -4,10 +4,11 @@
  *
  * Copyright (c) 2022 ZyzonixDevelopments
  *
- * date created  | 26-05-2022 23:07:48
+ * date created  | 27-05-2022 15:13:16
  * 
  * file          | command.js
- * project       | VSC-FileHeaderComment-V2
+ * project       | VSC-FileHeaderComment-v2
+ * file version  | 1.0
  */
 
 /*
@@ -34,7 +35,6 @@
 var vscode = require('vscode');
 var path = require("path");
 
-// function gets called by extension.js
 function insertFileHeaderComment(picked_template){
     var workspace = vscode.workspace,
         editor = vscode.window.activeTextEditor,
@@ -79,13 +79,8 @@ function insertFileHeaderComment(picked_template){
     // get full path of file (only project paths)
     fullFilePath = vscode.window.activeTextEditor.document.fileName,
     filePathSplit = fullFilePath.split(projectName),
-    fileWithPath = filePathSplit[filePathSplit.length - 1],
+    fileWithPath = filePathSplit[filePathSplit.length - 1].substring(1),
     fileWithPathAndProject = projectName + fileWithPath
-
-    // format fileWithPath (remove / in case of no path)
-    if (fileWithPath.split("/").length = 1) {
-        fileWithPath = fileName
-    }
 
     // format day / month to always two digits
     var date = new Date()
@@ -120,7 +115,7 @@ function insertFileHeaderComment(picked_template){
             'filewithpathandproject': fileWithPathAndProject,           // File with path and project   | project/path/to/file.py
             'hour': h,                                                  // Hour
             'minute': m,                                                // Minute
-            'second': s                                                 // Second
+            'second': s,                                                // Second
         };
     
     replace = Object.assign(replace, {
@@ -148,7 +143,9 @@ function insertFileHeaderComment(picked_template){
         case "perl":
         case "ruby":
         case "shellscript":
+        case "plaintext":
         case "yaml":
+        case "makefile":
         case "python":
             Object.assign(replace, {
                 'commentbegin': "#",
