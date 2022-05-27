@@ -20,15 +20,20 @@ This extension allow you to insert timestamp, copyright or any information to yo
 
 - insert defined parameter like `date`, `time`, `datetime`, `filename` (full list can be found [here](#variables))
 - insert your own parameter and template
-- detect files language to use correct comment prefix
+- detect files language to use correct comment prefix (list can be found [here](#language-list)
 - define multiple templates
 
 ## Quick Jump
+- [Updates](#updates)
 - [Installation](#installation)
 - [Setup](#setup)
 - [Usage](#usage)
-- [Extension settings](#extension-settings)
 - [Variables](#variables)
+- [Extension settings](#extension-settings)
+- [Language list](#language-list)
+
+## Updates
+- [1.0] Added support for Makefile
 
 ## Installation
 Paste this after pressing `ctrl+shift+p`
@@ -90,9 +95,29 @@ Parameter | Function | Example
 `minute` | current minute | 45
 `second` | current second | 20
 `filename` | filename | file.py
-`filewithpath` | filename with filepath | /path/to/file.py
+`filewithpath` | filename with filepath | path/to/file.py
 `filewithpathandproject` | filename with filepath and project | project/path/to/file.py
 `project` | projectname | project
+
+## Language list
+The following languages are automatically detected
+- Swift
+- Lua
+- Perl
+- Ruby
+- Shellscript/Bash
+- Yaml
+- Makefile
+- Python
+- VB
+- Clojure
+- XML
+- HTML
+- JavaScript
+- Java
+
+If there's a language not on the list that you wish to use: set custom prefixes under parameters, see [here](#extension-settings) or request an update via opening an issue.
+
 
 ## Extension settings
 
@@ -160,4 +185,16 @@ You can define multiple templates, for instance template for MIT License
 ```
 You can use your `mit` template above by calling it through 	`Command Pallete` and choose `FileHeaderComment: Select from Available Templates`.
 
-Readme version: 1.1
+You can set also custom comment prefixes if your language is not automatically detected:
+
+```
+"fileHeaderComment.parameter":{
+	"*":{
+		"commentbegin": "#",
+		"commentprefix": "#",
+		"commentend": "#",
+	}
+}
+```
+
+Readme version: 1.2
