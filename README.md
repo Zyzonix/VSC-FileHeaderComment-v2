@@ -185,6 +185,8 @@ You can define multiple templates, for instance template for MIT License
 ```
 You can use your `mit` template above by calling it through 	`Command Pallete` and choose `FileHeaderComment: Select from Available Templates`.
 
+Remember that all custom variables must be defined within `"*"` in parameters!
+
 You can set also custom comment prefixes if your language is not automatically detected:
 
 ```
@@ -197,4 +199,4 @@ You can set also custom comment prefixes if your language is not automatically d
 }
 ```
 
-Readme version: 1.2
+Readme version: 1.3
