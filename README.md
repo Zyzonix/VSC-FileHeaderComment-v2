@@ -20,7 +20,7 @@ This extension allow you to insert timestamp, copyright or any information to yo
 
 - insert defined parameter like `date`, `time`, `datetime`, `filename` (full list can be found [here](#variables))
 - insert your own parameter and template
-- detect files language to use correct comment prefix (list can be found [here](#language-list)
+- detect files language to use correct comment prefix (list can be found [here](#language-list))
 - define multiple templates
 
 ## Quick Jump
@@ -199,4 +199,4 @@ You can set also custom comment prefixes if your language is not automatically d
 }
 ```
 
-Readme version: 1.3
+Readme version: 1.4
