@@ -32,6 +32,11 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/*
+ * This project is a fork of https://github.com/doi/fileheadercomment
+ *
+ */
+
 var vscode = require('vscode');
 var path = require("path");
 

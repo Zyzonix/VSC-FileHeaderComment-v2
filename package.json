@@ -1,59 +1,69 @@
 {
-    "name": "fileheadercomment",
-    "displayName": "File Header Comment",
-    "description": "Insert File Header Comment such as date, time",
-    "version": "0.0.5",
-    "publisher": "doi",
-    "engines": {
-        "vscode": "^1.0.0"
-    },
-    "categories": [
-        "Other"
+  "name": "vsc-fileheadercomment-v2",
+  "displayName": "VSC-FileHeaderComment-v2",
+  "description": "Inserts customized header comments based on the language used into your files automatically. This is a fork of FileHeaderComment (https://github.com/doi/fileheadercomment) with additional features, see https://github.com/Zyzonix/VSC-FileHeaderComment-v2",
+  "version": "1.0.0",
+  "publisher": "Zyzonix",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.67.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.insertFileHeaderComment",
+    "onCommand:extension.insertFileHeaderCommentOther"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.insertFileHeaderComment",
+        "title": "FileHeaderComment: Insert Default Template at Cursor"
+      },
+      {
+        "command": "extension.insertFileHeaderCommentOther",
+        "title": "FileHeaderComment: Select from Available Templates"
+      }
     ],
-    "activationEvents": [
-        "onCommand:extension.insertFileHeaderComment",
-        "onCommand:extension.insertFileHeaderCommentOther"
-    ],
-    "main": "./extension",
-    "contributes": {
-        "commands": [{
-            "command": "extension.insertFileHeaderComment",
-            "title": "FileHeaderComment: Insert Default Template at Cursor"
-        },{
-            "command": "extension.insertFileHeaderCommentOther",
-            "title": "FileHeaderComment: Select from Available Templates"
-        }],
-            "configuration": {
-                "type": "object",
-                "title": "FileHeaderComment Configuration",
-                "properties": {
-                    "fileHeaderComment.parameter": {
-                        "type": "object",
-                        "default": {
-                            "*":{}
-                        },
-                        "description": "Configure parameter/variable used in comment"
-                    },
-                    "fileHeaderComment.template": {
-                        "type": "object",
-                        "default": {},
-                        "description": "Define custom template"
-                    }
-                }
-            }
-    },
-    "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install"
-    },
-    "devDependencies": {
-        "vscode": "^0.11.0"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/doi/fileheadercomment.git"
-    },
-    "bugs": {
-        "url": "https://github.com/doi/fileheadercomment/issues"
-    },
-    "license": "SEE LICENSE IN LICENSE.md"
+    "configuration": {
+      "type": "object",
+      "title": "FileHeaderComment Configuration",
+      "properties": {
+        "fileHeaderComment.parameter": {
+          "type": "object",
+          "default": {
+            "*": {}
+          },
+          "description": "Configure parameter/variable used in comment"
+        },
+        "fileHeaderComment.template": {
+          "type": "object",
+          "default": {},
+          "description": "Define custom template"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.67.0",
+    "@vscode/test-electron": "^2.1.3",
+    "eslint": "^8.14.0",
+    "glob": "^8.0.1",
+    "mocha": "^9.2.2",
+    "typescript": "^4.6.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zyzonix/VSC-FileHeaderComment-v2.git"
+  }
 }
