@@ -39,9 +39,9 @@ There are three ways to install this extension:
 - manual install of vsix-file from releases
 - git-clone and manual package export with vsce
 ```
-	git clone https://github.com/Zyzonix/VSC-FileHeaderComment-v2.git
-	npm install -g vsce
-	vsce package
+$ git clone https://github.com/Zyzonix/VSC-FileHeaderComment-v2.git
+$ npm install -g vsce
+$ vsce package
 ```
 
 ## Setup
@@ -217,4 +217,4 @@ You can set also custom comment prefixes if your language is not automatically d
 }
 ```
 
-Readme version: 1.7
+Readme version: 1.8
