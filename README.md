@@ -27,14 +27,22 @@ This extension allow you to insert timestamp, copyright or any information to yo
 - [Language list](#language-list)
 
 ## Updates
+- [1.0.2] Updated install instructions
+
 - [1.0.1] Fixed template variable issue
 
 - [1.0.0] Added support for Makefile
 
 ## Installation
-Paste this after pressing `ctrl+shift+p`
+There are three ways to install this extension:
+- VisualStudio Marketplace (or Extensiontab within VSC)
+- manual install of vsix-file from releases
+- git-clone and manual package export with vsce
 
-	ext install vsc-fileheadercomment-v2
+	git clone https://github.com/Zyzonix/VSC-FileHeaderComment-v2.git
+	npm install -g vsce
+	vsce package
+
 
 ## Setup
 Firstly paste the default configuration to your `settings.js`: 
@@ -209,4 +217,4 @@ You can set also custom comment prefixes if your language is not automatically d
 }
 ```
 
-Readme version: 1.5
+Readme version: 1.6
