@@ -40,7 +40,9 @@
 var vscode = require('vscode');
 var path = require("path");
 
+//import settings from settings.json
 function insertFileHeaderComment(picked_template){
+    console.log("Selected template: " + picked_template)
     var workspace = vscode.workspace,
         editor = vscode.window.activeTextEditor,
         // root = workspace.rootPath,
@@ -53,10 +55,10 @@ function insertFileHeaderComment(picked_template){
         template = [];
     if(picked_template){
         t_default = workspace.getConfiguration(prefix+".template").get(picked_template);
-        var tmp_r_default = workspace.getConfiguration(prefix+".parameter").get(picked_template);
-        if(tmp_r_default instanceof Object){
-            Object.assign(r_default, tmp_r_default);
-        }
+        r_default = workspace.getConfiguration(prefix+".parameter").get(picked_template);
+        //if(tmp_r_default instanceof Object){
+        //    Object.assign(r_default, tmp_r_default);
+        //}
     }
 
     if(t_default instanceof Array){

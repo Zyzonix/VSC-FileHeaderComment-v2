@@ -27,7 +27,9 @@ This extension allow you to insert timestamp, copyright or any information to yo
 - [Language list](#language-list)
 
 ## Updates
-- [1.0] Added support for Makefile
+- [1.0.1] Fixed template variable issue
+
+- [1.0.0] Added support for Makefile
 
 ## Installation
 Paste this after pressing `ctrl+shift+p`
@@ -61,7 +63,7 @@ This file can be found under extension settings, keep in mind to edit the correc
 ## Usage
 By default you don't have to set anything. It will detect most programming language for appropriate comment syntax.
 
-Execute it from `Command Pallete` (menu View - Command Pallete...) then type command below:
+Execute it from `Command Pallete` (menu View - Command Pallete... or ctrl+shift+p) then type command below:
 
 1. `FileHeaderComment: Insert Default Template at Cursor`
 2. `FileHeaderComment: Select from Available Templates`
@@ -146,7 +148,9 @@ You can define multiple templates, for instance template for MIT License
 ```
 "fileHeaderComment.parameter":{
 	"*":{
-		"author": "Your Name",
+		"author": "Your Name"
+	},
+	"mit":{
 		"license_mit":[
 			"The MIT License (MIT)",
 			" Copyright (c) ${year} ${author}",
@@ -166,8 +170,14 @@ You can define multiple templates, for instance template for MIT License
 			" TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
 		]
 	}
+
 },
 "fileHeaderComment.template":{
+	"*":[
+		"${commentbegin}",
+		"${commentprefix} Created by ${author}",
+		"${commentend}"
+	],
 	"mit":[
 		"${commentbegin}",
 		"${commentprefix} Created on ${date}",
@@ -177,20 +187,26 @@ You can define multiple templates, for instance template for MIT License
 	]
 }
 ```
-You can use your `mit` template above by calling it through 	`Command Pallete` and choose `FileHeaderComment: Select from Available Templates`.
-
-Remember that all custom variables must be defined within `"*"` in parameters!
+You can use your `mit` template above by calling it through `Command Pallete` and choose `FileHeaderComment: Select from Available Templates`.
 
 You can set also custom comment prefixes if your language is not automatically detected:
 
 ```
 "fileHeaderComment.parameter":{
-	"*":{
+	"your_language":{
 		"commentbegin": "#",
 		"commentprefix": "#",
 		"commentend": "#",
+		"author": "Your name"
+	}
+},
+"fileHeaderComment.template":{
+	"your_language":{
+		"${commentbegin}",
+		"${commentprefix} Created by ${author}",
+		"${commentend}"
 	}
 }
 ```
 
-Readme version: 1.4
+Readme version: 1.5
