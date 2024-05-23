@@ -27,6 +27,8 @@ This extension allow you to insert timestamp, copyright or any information to yo
 - [Language list](#language-list)
 
 ## Updates
+- [1.1.0] Fixed ```filewithproject``` variable
+
 - [1.0.2] Updated install instructions
 
 - [1.0.1] Fixed template variable issue
