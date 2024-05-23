@@ -8,7 +8,7 @@
  * 
  * file          | command.js
  * project       | VSC-FileHeaderComment-v2
- * file version  | 1.0
+ * file version  | 1.1
  */
 
 /*
@@ -85,8 +85,12 @@ function insertFileHeaderComment(picked_template){
 
     // get full path of file (only project paths)
     fullFilePath = vscode.window.activeTextEditor.document.fileName,
-    filePathSplit = fullFilePath.split(projectName),
-    fileWithPath = filePathSplit[filePathSplit.length - 1].substring(1),
+    // get length of all directories above project /path/to/project
+    indexOfFirst = fullFilePath.indexOf(projectName),
+    // get length of project name, add 1 for last '/'
+    lengthProjectName = projectName.length + 1,
+    // remove all /path/to/project and project/
+    fileWithPath = fullFilePath.slice(indexOfFirst + lengthProjectName)
     fileWithPathAndProject = projectName + fileWithPath
 
     // format day / month to always two digits
