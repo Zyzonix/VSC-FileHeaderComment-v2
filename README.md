@@ -219,4 +219,21 @@ You can set also custom comment prefixes if your language is not automatically d
 }
 ```
 
-Readme version: 1.8
+## Build extension from source
+--> on Debian
+Install Nodejs (14=< required), replace ```18.x``` with current latest version
+```
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install nodejs
+sudo npm install -g vsce
+```
+Enter location: on Linux: ```~/.vscode-server/extensions/```
+```
+cd VSC-FileHeaderComment-v2
+```
+Build package:
+```
+vsce package
+```
+
+Readme version: 1.9
