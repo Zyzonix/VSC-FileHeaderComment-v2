@@ -27,6 +27,8 @@ This extension allow you to insert timestamp, copyright or any information to yo
 - [Language list](#language-list)
 
 ## Updates
+- [1.1.1] Added PowerShell support
+
 - [1.1.0] Fixed ```filewithproject``` variable
 
 - [1.0.2] Updated install instructions
@@ -121,6 +123,7 @@ The following languages are automatically detected
 - HTML
 - JavaScript
 - Java
+- PowerShell
 
 If there's a language not on the list that you wish to use: set custom prefixes under parameters, see [here](#extension-settings) or request an update via opening an issue.
 

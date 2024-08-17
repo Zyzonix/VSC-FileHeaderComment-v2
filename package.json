@@ -2,7 +2,7 @@
   "name": "vsc-fileheadercomment-v2",
   "displayName": "VSC-FileHeaderComment-v2",
   "description": "Inserts customized header comments based on the language used into your files automatically. This is a fork of FileHeaderComment (https://github.com/doi/fileheadercomment) with additional features, see https://github.com/Zyzonix/VSC-FileHeaderComment-v2",
-  "version": "1.0.2",
+  "version": "1.1.1",
   "publisher": "Zyzonix",
   "icon": "icon.png",
   "engines": {

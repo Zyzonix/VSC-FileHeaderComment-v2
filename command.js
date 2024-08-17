@@ -158,6 +158,7 @@ function insertFileHeaderComment(picked_template){
         case "yaml":
         case "makefile":
         case "python":
+        case "powershell":
             Object.assign(replace, {
                 'commentbegin': "#",
                 'commentprefix': "#",
